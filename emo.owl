@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE rdf:RDF [
+  <!ENTITY emo "http://ocean-data.org/schema/entity-matching#">
+  <!ENTITY owl "http://www.w3.org/2002/07/owl#">
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+  <!ENTITY dc "http://purl.org/dc/elements/1.1/">
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+]>
+<rdf:RDF
+  xmlns:owl="&owl;"
+  xmlns:emo="&emo;"
+  xmlns:xsd="&xsd;"
+  xmlns:dc="&dc;"
+  xmlns:rdf="&rdf;"
+  xmlns:rdfs="&rdfs;"
+  xml:base="&emo;">
+  
+<owl:Ontology rdf:about="&emo;">
+  <rdfs:label rdf:datatype="&xsd;string">Entity Matching Ontology</rdfs:label>
+  <dc:description>An ontology for describing matches between entities</dc:description>
+</owl:Ontology>
+  
+<owl:Class rdf:about="&emo;CruiseMatch">
+  <rdfs:label rdf:datatype="&xsd;string">Organization</rdfs:label>
+</owl:Class>
+
+<owl:DatatypeProperty rdf:about="&emo;hasCruiseID">
+  <rdfs:range rdf:resource="&xsd;string"/>
+  <rdfs:domain rdf:resource="&emo;CruiseMatch"/>
+</owl:DatatypeProperty>
+<owl:DatatypeProperty rdf:about="&emo;hasCruiseStartDate">
+  <rdfs:range rdf:resource="&xsd;date"/>
+  <rdfs:domain rdf:resource="&emo;CruiseMatch"/>
+</owl:DatatypeProperty>
+<owl:DatatypeProperty rdf:about="&emo;hasCruiseEndDate">
+  <rdfs:range rdf:resource="&xsd;date"/>
+  <rdfs:domain rdf:resource="&emo;CruiseMatch"/>
+</owl:DatatypeProperty>
+<owl:DatatypeProperty rdf:about="&emo;hasChiefScientist">
+  <rdfs:range rdf:resource="&xsd;string"/>
+  <rdfs:domain rdf:resource="&emo;CruiseMatch"/>
+</owl:DatatypeProperty>
+<owl:DatatypeProperty rdf:about="&emo;hasVesselName">
+  <rdfs:range rdf:resource="&xsd;string"/>
+  <rdfs:domain rdf:resource="&emo;CruiseMatch"/>
+</owl:DatatypeProperty>
+<owl:DatatypeProperty rdf:about="&emo;hasVesselCode">
+  <rdfs:range rdf:resource="&xsd;string"/>
+  <rdfs:domain rdf:resource="&emo;CruiseMatch"/>
+</owl:DatatypeProperty>
+<owl:DatatypeProperty rdf:about="&emo;hasCommunityURI">
+  <rdfs:range rdf:resource="&xsd;anyURI"/>
+  <rdfs:domain rdf:resource="&emo;CruiseMatch"/>
+</owl:DatatypeProperty>
+
+</rdf:RDF>
