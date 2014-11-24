@@ -30,12 +30,12 @@
   <rdfs:range rdf:resource="&xsd;string"/>
   <rdfs:domain rdf:resource="&emo;CruiseMatch"/>
 </owl:DatatypeProperty>
-<owl:DatatypeProperty rdf:about="&emo;cruiseStartDate">
+<owl:DatatypeProperty rdf:about="&emo;startDate">
   <dc:description>The official start date of the cruise such as '2014-11-24'</dc:description>
   <rdfs:range rdf:resource="&xsd;date"/>
   <rdfs:domain rdf:resource="&emo;CruiseMatch"/>
 </owl:DatatypeProperty>
-<owl:DatatypeProperty rdf:about="&emo;cruiseEndDate">
+<owl:DatatypeProperty rdf:about="&emo;endDate">
   <dc:description>The official end date of the cruise such as '2014-11-30'</dc:description>
   <rdfs:range rdf:resource="&xsd;date"/>
   <rdfs:domain rdf:resource="&emo;CruiseMatch"/>
