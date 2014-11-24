@@ -55,8 +55,13 @@
   <rdfs:range rdf:resource="&xsd;string"/>
   <rdfs:domain rdf:resource="&emo;CruiseMatch"/>
 </owl:DatatypeProperty>
+<owl:DatatypeProperty rdf:about="&emo;vesselURI">
+  <dc:description>The official code of the vessel of the cruise such as 'http://vocab.nerc.ac.uk/collection/L06/current/31/'</dc:description>
+  <rdfs:range rdf:resource="&xsd;anyURI"/>
+  <rdfs:domain rdf:resource="&emo;CruiseMatch"/>
+</owl:DatatypeProperty>
 <owl:DatatypeProperty rdf:about="&emo;communityURI">
-  <dc:description>The official code of the vessel of the cruise such as 'http://vocab.nerc.ac.uk/collection/C17/current/32OC'</dc:description>
+  <dc:description>The community URI of the cruise such as 'http://vocab.nerc.ac.uk/collection/C17/current/32OC'</dc:description>
   <rdfs:range rdf:resource="&xsd;anyURI"/>
   <rdfs:domain rdf:resource="&emo;CruiseMatch"/>
 </owl:DatatypeProperty>
