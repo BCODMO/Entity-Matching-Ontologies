@@ -26,30 +26,37 @@
 </owl:Class>
 
 <owl:DatatypeProperty rdf:about="&emo;hasCruiseID">
+  <dc:description>The official cruise ID such as 'OC404-01'</dc:description>
   <rdfs:range rdf:resource="&xsd;string"/>
   <rdfs:domain rdf:resource="&emo;CruiseMatch"/>
 </owl:DatatypeProperty>
 <owl:DatatypeProperty rdf:about="&emo;hasCruiseStartDate">
+  <dc:description>The official start date of the cruise such as '2014-11-24'</dc:description>
   <rdfs:range rdf:resource="&xsd;date"/>
   <rdfs:domain rdf:resource="&emo;CruiseMatch"/>
 </owl:DatatypeProperty>
 <owl:DatatypeProperty rdf:about="&emo;hasCruiseEndDate">
+  <dc:description>The official end date of the cruise such as '2014-11-30'</dc:description>
   <rdfs:range rdf:resource="&xsd;date"/>
   <rdfs:domain rdf:resource="&emo;CruiseMatch"/>
 </owl:DatatypeProperty>
 <owl:DatatypeProperty rdf:about="&emo;hasChiefScientist">
+  <dc:description>The name of the official chief scientist of the cruise such as 'Dennis McGillicuddy'</dc:description>
   <rdfs:range rdf:resource="&xsd;string"/>
   <rdfs:domain rdf:resource="&emo;CruiseMatch"/>
 </owl:DatatypeProperty>
 <owl:DatatypeProperty rdf:about="&emo;hasVesselName">
+  <dc:description>The official name of the vessel of the cruise such as 'Oceanus'</dc:description>
   <rdfs:range rdf:resource="&xsd;string"/>
   <rdfs:domain rdf:resource="&emo;CruiseMatch"/>
 </owl:DatatypeProperty>
 <owl:DatatypeProperty rdf:about="&emo;hasVesselCode">
+  <dc:description>The official code of the vessel of the cruise such as '32OC'</dc:description>
   <rdfs:range rdf:resource="&xsd;string"/>
   <rdfs:domain rdf:resource="&emo;CruiseMatch"/>
 </owl:DatatypeProperty>
 <owl:DatatypeProperty rdf:about="&emo;hasCommunityURI">
+  <dc:description>The official code of the vessel of the cruise such as 'http://vocab.nerc.ac.uk/collection/C17/current/32OC'</dc:description>
   <rdfs:range rdf:resource="&xsd;anyURI"/>
   <rdfs:domain rdf:resource="&emo;CruiseMatch"/>
 </owl:DatatypeProperty>
