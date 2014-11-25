@@ -28,6 +28,12 @@
     <dc:description>A collection of PotentialMatch entities</dc:description>
     <owl:disjointWith rdf:resource="&emo;PotentialMatch"/>
     <owl:disjointWith rdf:resource="&emo;MatchingEntity"/>
+    <rdfs:subClassOf>
+      <owl:Restriction> 
+        <owl:onProperty rdf:resource="&emo;hasMatch"/>
+        <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+      </owl:Restriction> 
+    </rdfs:subClassOf>
   </owl:Class>
 
   <owl:ObjectProperty rdf:about="&emo;hasMatch">
@@ -182,4 +188,3 @@
   </owl:DatatypeProperty>
 
 </rdf:RDF>
-
