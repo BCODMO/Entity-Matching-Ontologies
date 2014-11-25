@@ -58,15 +58,15 @@
     </rdfs:subClassOf>
   </owl:Class>
   
-  <owl:ObjectProperty rdf:about="&emo;potentialMatch">
-    <dc:description>A potential match</dc:description>
+  <owl:DatatypeProperty rdf:about="&emo;potentialMatch">
+    <dc:description>A potential match RDF file</dc:description>
     <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-    <rdfs:range rdf:resource="&emo;PotentialMatch"/>
+    <rdfs:range rdf:resource="&xsd;anyURI"/>
     <rdfs:domain rdf:resource="&emo;PotentialMatchRecord"/>
-  </owl:ObjectProperty>
-  <owl:DatatypeProperty rdf:about="&emo;quality">
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="&emo;matchQuality">
     <!-- should be a View into the PotentialMatch score property -->
-    <dc:description>The calculated score that determined the quality of the potential match</dc:description>
+    <dc:description>Should be the equivalent to a PotentialMatch score property</dc:description>
     <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
     <rdfs:range rdf:resource="&xsd;decimal"/>
     <rdfs:domain rdf:resource="&emo;PotentialMatchRecord"/>
