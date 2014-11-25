@@ -128,6 +128,13 @@
     <rdfs:subClassOf rdf:resource="&emo;PotentialMatches"/>
   </owl:Class>
   
+    <owl:DatatypeProperty rdf:about="&emo;localCruiseUniqueIdentifier">
+      <dc:description>A local identifier that uniquely and unambiguously identies the cruise</dc:description>
+      <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      <rdfs:range rdf:resource="&xsd;string"/>
+      <rdfs:domain rdf:resource="&emo;PotentialCruiseMatches"/>
+    </owl:DatatypeProperty>
+    
     <owl:DatatypeProperty rdf:about="&emo;localCruiseID">
       <dc:description>Should be stated as equivalent to the localCruise:cruiseID</dc:description>
       <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
