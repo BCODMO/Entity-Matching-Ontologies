@@ -22,88 +22,58 @@
     <dc:description>An ontology for describing matches between entities</dc:description>
   </owl:Ontology>
 
-  <!-- COLLECTION OF MATCHES -->
+  <!-- MATCH COLLECTION -->
   <owl:Class rdf:about="&emo;MatchCollection">
     <rdfs:label rdf:datatype="&xsd;string">Match Collection</rdfs:label>
-    <dc:description>A collection of PotentialMatch entities</dc:description>
-    <owl:disjointWith rdf:resource="&emo;PotentialMatch"/>
+    <dc:description>A collection of PotentialMatches resources</dc:description>
+    <owl:disjointWith rdf:resource="&emo;PotentialMatches"/>
+    <owl:disjointWith rdf:resource="&emo;PossibleMatch"/>
     <owl:disjointWith rdf:resource="&emo;MatchingEntity"/>
-    <owl:disjointWith rdf:resource="&emo;PotentialMatchRecord"/>
     <rdfs:subClassOf>
       <owl:Restriction> 
-        <owl:onProperty rdf:resource="&emo;hasMatch"/>
+        <owl:onProperty rdf:resource="&emo;hasPotenitalMatches"/>
         <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
       </owl:Restriction> 
     </rdfs:subClassOf>
   </owl:Class>
 
-  <owl:ObjectProperty rdf:about="&emo;hasMatch">
-    <dc:description>A match in a collection</dc:description>
-    <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
-    <rdfs:range rdf:resource="&emo;PotentialMatchRecord"/>
-    <rdfs:domain rdf:resource="&emo;MatchCollection"/>
-  </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="&emo;hasPotentialMatches">
+      <dc:description>A match in a collection</dc:description>
+      <rdfs:range rdf:resource="&emo;PotentialMatches"/>
+      <rdfs:domain rdf:resource="&emo;MatchCollection"/>
+    </owl:ObjectProperty>
   
-  <!-- POTENTIAL MATCH RECORD -->
-  <owl:Class rdf:about="&emo;PotentialMatchRecord">
-    <rdfs:label rdf:datatype="&xsd;string">Potential Match Record</rdfs:label>
-    <dc:description>Record of PotentialMatch metadata</dc:description>
-    <owl:disjointWith rdf:resource="&emo;PotentialMatch"/>
+  <!-- POTENTIAL MATCHES -->
+  <owl:Class rdf:about="&emo;PotentialMatches">
+    <rdfs:label rdf:datatype="&xsd;string">Potential Matches</rdfs:label>
+    <dc:description>Metadata about PotentialMatches for one local entity</dc:description>
+    <owl:disjointWith rdf:resource="&emo;PossibleMatch"/>
     <owl:disjointWith rdf:resource="&emo;MatchingEntity"/>
     <rdfs:subClassOf>
       <owl:Restriction> 
-        <owl:onProperty rdf:resource="&emo;potentialMatch"/>
-        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+        <owl:onProperty rdf:resource="&emo;potentialMatchRdfDataFile"/>
+        <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
       </owl:Restriction> 
     </rdfs:subClassOf>
   </owl:Class>
   
-  <owl:DatatypeProperty rdf:about="&emo;potentialMatch">
-    <dc:description>A potential match RDF file</dc:description>
-    <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-    <rdfs:range rdf:resource="&xsd;anyURI"/>
-    <rdfs:domain rdf:resource="&emo;PotentialMatchRecord"/>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="&emo;matchQuality">
-    <!-- should be a View into the PotentialMatch score property -->
-    <dc:description>Should be the equivalent to a PotentialMatch score property</dc:description>
-    <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-    <rdfs:range rdf:resource="&xsd;decimal"/>
-    <rdfs:domain rdf:resource="&emo;PotentialMatchRecord"/>
-  </owl:DatatypeProperty>
-  
-  <!-- POTENTIAL CRUISE MATCH RECORD -->
-  <owl:Class rdf:about="&emo;CruiseMatchRecord">
-    <rdfs:label rdf:datatype="&xsd;string">Cruise Match Record</rdfs:label>
-    <dc:description>Record of CruiseMatch metadata</dc:description>
-    <rdfs:subClassOf rdf:resource="&emo;PotentialMatchRecord"/>
-    <owl:disjointWith rdf:resource="&emo;PotentialMatch"/>
-    <owl:disjointWith rdf:resource="&emo;MatchingEntity"/>
-  </owl:Class>
-  
-  <owl:DatatypeProperty rdf:about="&emo;localCruiseID">
-    <dc:description>Should be stated as equivalent to the localCruise:cruiseID</dc:description>
-    <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-    <rdfs:range rdf:resource="&xsd;string"/>
-    <rdfs:domain rdf:resource="&emo;CruiseMatch"/>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="&emo;localStartDate">
-    <dc:description>Should be stated as equivalent to the localCruise:startDate</dc:description>
-    <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-    <rdfs:range rdf:resource="&xsd;string"/>
-    <rdfs:domain rdf:resource="&emo;CruiseMatch"/>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="&emo;localVesselCode">
-    <dc:description>Should be stated as equivalent to the localCruise:vesselCode</dc:description>
-    <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-    <rdfs:range rdf:resource="&xsd;string"/>
-    <rdfs:domain rdf:resource="&emo;CruiseMatch"/>
-  </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="&emo;potentialMatchRdfDataFile">
+      <dc:description>A potential match RDF file</dc:description>
+      <rdfs:range rdf:resource="&xsd;anyURI"/>
+      <rdfs:domain rdf:resource="&emo;PotentialMatches"/>
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="&emo;bestScore">
+      <dc:description>Should be the equivalent to a PotentialMatch score property with the highest value</dc:description>
+      <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      <rdfs:range rdf:resource="&xsd;decimal"/>
+      <rdfs:domain rdf:resource="&emo;PotentialMatches"/>
+    </owl:DatatypeProperty>
 
-  <!-- POTENTIAL MATCH -->  
-  <owl:Class rdf:about="&emo;PotentialMatch">
-    <rdfs:label rdf:datatype="&xsd;string">Potential Match</rdfs:label>
-    <dc:description>A potential match describes the quality of a possible match between two entities</dc:description>
+  <!-- POSSIBLE MATCH -->
+  <owl:Class rdf:about="&emo;PossibleMatch">
+    <rdfs:label rdf:datatype="&xsd;string">Match</rdfs:label>
+    <dc:description>A possible match describes the quality of the match between two entities</dc:description>
     <owl:disjointWith rdf:resource="&emo;MatchingEntity"/>
     <rdfs:subClassOf>
       <owl:Restriction> 
@@ -121,53 +91,86 @@
     </rdfs:subClassOf>
   </owl:Class>
   
-  <owl:DatatypeProperty rdf:about="&emo;score">
-    <dc:description>The calculated score that determined the quality of the potential match</dc:description>
-    <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-    <rdfs:range rdf:resource="&xsd;decimal"/>
-    <rdfs:domain rdf:resource="&emo;PotentialMatch"/>
-  </owl:DatatypeProperty>
-  <owl:ObjectProperty rdf:about="&emo;localEntity">
-    <dc:description>The local entity in the potential match</dc:description>
-    <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-    <rdfs:range rdf:resource="&emo;MatchingEntity"/>
-    <rdfs:domain rdf:resource="&emo;PotentialMatch"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="&emo;extenalEntity">
-    <dc:description>The external entity in the potential match</dc:description>
-    <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-    <rdfs:range rdf:resource="&emo;MatchingEntity"/>
-    <rdfs:domain rdf:resource="&emo;PotentialMatch"/>
-  </owl:ObjectProperty>
-  
-  <!-- CRUISE MATCH -->
-  <owl:Class rdf:about="&emo;CruiseMatch">
-  	<rdfs:label rdf:datatype="&xsd;string">Cruise Match</rdfs:label>
-    <rdfs:subClassOf rdf:resource="&emo;PotentialMatch"/>
-    <dc:description>A potential match between two cruises</dc:description>
-  </owl:Class>
-  
-  <owl:ObjectProperty rdf:about="&emo;localCruise">
-    <dc:description>The local entity in the potential match</dc:description>
-    <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-    <rdfs:subPropertyOf rdf:resource="&emo;localEntity" />
-    <rdfs:range rdf:resource="&emo;Cruise"/>
-    <rdfs:domain rdf:resource="&emo;CruiseMatch"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="&emo;externalCruise">
-    <dc:description>The external entity in the potential match</dc:description>
-    <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-    <rdfs:subPropertyOf rdf:resource="&emo;externalEntity" />
-    <rdfs:range rdf:resource="&emo;Cruise"/>
-    <rdfs:domain rdf:resource="&emo;CruiseMatch"/>
-  </owl:ObjectProperty>
-  
-  
+    <owl:DatatypeProperty rdf:about="&emo;score">
+      <dc:description>The calculated score that determined the quality of the potential match</dc:description>
+      <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      <rdfs:range rdf:resource="&xsd;decimal"/>
+      <rdfs:domain rdf:resource="&emo;PotentialMatch"/>
+    </owl:DatatypeProperty>
+    
+    <owl:ObjectProperty rdf:about="&emo;localEntity">
+      <dc:description>The local entity in the potential match</dc:description>
+      <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      <rdfs:range rdf:resource="&emo;MatchingEntity"/>
+      <rdfs:domain rdf:resource="&emo;PotentialMatch"/>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="&emo;extenalEntity">
+      <dc:description>The external entity in the potential match</dc:description>
+      <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      <rdfs:range rdf:resource="&emo;MatchingEntity"/>
+      <rdfs:domain rdf:resource="&emo;PotentialMatch"/>
+    </owl:ObjectProperty>
+    
   <!-- MATCHING ENTITY -->
   <owl:Class rdf:about="&emo;MatchingEntity">
     <rdfs:label rdf:datatype="&xsd;string">Matching Entity</rdfs:label>
     <dc:description>An entity that can be compared to other Matching Entities and matched</dc:description>
   </owl:Class>
+  
+
+  <!-- CRUISE MATCHING -->
+  
+  <!-- POTENTIAL CRUISE MATCHES -->
+  <owl:Class rdf:about="&emo;PotentialCruiseMatches">
+    <rdfs:label rdf:datatype="&xsd;string">Cruise Match Record</rdfs:label>
+    <dc:description>Record of CruiseMatch metadata</dc:description>
+    <rdfs:subClassOf rdf:resource="&emo;PotentialMatches"/>
+  </owl:Class>
+  
+    <owl:DatatypeProperty rdf:about="&emo;localCruiseID">
+      <dc:description>Should be stated as equivalent to the localCruise:cruiseID</dc:description>
+      <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      <rdfs:range rdf:resource="&xsd;string"/>
+      <rdfs:domain rdf:resource="&emo;PotentialCruiseMatches"/>
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="&emo;localStartDate">
+      <dc:description>Should be stated as equivalent to the localCruise:startDate</dc:description>
+      <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      <rdfs:range rdf:resource="&xsd;string"/>
+      <rdfs:domain rdf:resource="&emo;PotentialCruiseMatches"/>
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="&emo;localVesselCode">
+      <dc:description>Should be stated as equivalent to the localCruise:vesselCode</dc:description>
+      <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      <rdfs:range rdf:resource="&xsd;string"/>
+      <rdfs:domain rdf:resource="&emo;PotentialCruiseMatches"/>
+    </owl:DatatypeProperty>
+  
+  <!-- POSSIBLE CRUISE MATCH -->
+  <owl:Class rdf:about="&emo;PossibleCruiseMatch">
+  	<rdfs:label rdf:datatype="&xsd;string">Possible Cruise Match</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&emo;PossibleMatch"/>
+    <dc:description>A possible match between two cruises</dc:description>
+  </owl:Class>
+  
+    <owl:ObjectProperty rdf:about="&emo;localCruise">
+      <dc:description>The local entity in the potential match</dc:description>
+      <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      <rdfs:subPropertyOf rdf:resource="&emo;localEntity" />
+      <rdfs:range rdf:resource="&emo;Cruise"/>
+      <rdfs:domain rdf:resource="&emo;PossibleCruiseMatch"/>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="&emo;externalCruise">
+      <dc:description>The external entity in the potential match</dc:description>
+      <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+      <rdfs:subPropertyOf rdf:resource="&emo;externalEntity" />
+      <rdfs:range rdf:resource="&emo;Cruise"/>
+      <rdfs:domain rdf:resource="&emo;PossibleCruiseMatch"/>
+    </owl:ObjectProperty>
   
   <!-- CRUISE -->  
   <owl:Class rdf:about="&emo;Cruise">
@@ -176,53 +179,60 @@
     <dc:description>A Cruise</dc:description>
   </owl:Class>
   
-  <owl:DatatypeProperty rdf:about="&emo;cruiseID">
-    <dc:description>The official cruise ID such as 'OC404-01'</dc:description>
-    <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-    <rdfs:range rdf:resource="&xsd;string"/>
-    <rdfs:domain rdf:resource="&emo;Cruise"/>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="&emo;startDate">
-    <dc:description>The official start date of the cruise such as '2014-11-24'</dc:description>
-    <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-    <rdfs:range rdf:resource="&xsd;date"/>
-    <rdfs:domain rdf:resource="&emo;Cruise"/>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="&emo;endDate">
-    <dc:description>The official end date of the cruise such as '2014-11-30'</dc:description>
-    <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-    <rdfs:range rdf:resource="&xsd;date"/>
-    <rdfs:domain rdf:resource="&emo;Cruise"/>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="&emo;chiefScientist">
-    <dc:description>The name of the official chief scientist of the cruise such as 'Dennis McGillicuddy'</dc:description>
-    <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-    <rdfs:range rdf:resource="&xsd;string"/>
-    <rdfs:domain rdf:resource="&emo;Cruise"/>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="&emo;vesselName">
-    <dc:description>The official name of the vessel of the cruise such as 'Oceanus'</dc:description>
-    <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-    <rdfs:range rdf:resource="&xsd;string"/>
-    <rdfs:domain rdf:resource="&emo;Cruise"/>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="&emo;vesselCode">
-    <dc:description>The official code of the vessel of the cruise such as '32OC'</dc:description>
-    <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-    <rdfs:range rdf:resource="&xsd;string"/>
-    <rdfs:domain rdf:resource="&emo;Cruise"/>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="&emo;vesselURI">
-    <dc:description>The official code of the vessel of the cruise such as 'http://vocab.nerc.ac.uk/collection/L06/current/31/'</dc:description>
-    <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-    <rdfs:range rdf:resource="&xsd;anyURI"/>
-    <rdfs:domain rdf:resource="&emo;Cruise"/>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="&emo;communityURI">
-    <dc:description>The community URI of the cruise such as 'http://vocab.nerc.ac.uk/collection/C17/current/32OC'</dc:description>
-    <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-    <rdfs:range rdf:resource="&xsd;anyURI"/>
-    <rdfs:domain rdf:resource="&emo;Cruise"/>
-  </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="&emo;cruiseID">
+      <dc:description>The official cruise ID such as 'OC404-01'</dc:description>
+      <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      <rdfs:range rdf:resource="&xsd;string"/>
+      <rdfs:domain rdf:resource="&emo;Cruise"/>
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="&emo;startDate">
+      <dc:description>The official start date of the cruise such as '2014-11-24'</dc:description>
+      <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      <rdfs:range rdf:resource="&xsd;date"/>
+      <rdfs:domain rdf:resource="&emo;Cruise"/>
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="&emo;endDate">
+      <dc:description>The official end date of the cruise such as '2014-11-30'</dc:description>
+      <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      <rdfs:range rdf:resource="&xsd;date"/>
+      <rdfs:domain rdf:resource="&emo;Cruise"/>
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="&emo;chiefScientist">
+      <dc:description>The name of the official chief scientist of the cruise such as 'Dennis McGillicuddy'</dc:description>
+      <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      <rdfs:range rdf:resource="&xsd;string"/>
+      <rdfs:domain rdf:resource="&emo;Cruise"/>
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="&emo;vesselName">
+      <dc:description>The official name of the vessel of the cruise such as 'Oceanus'</dc:description>
+      <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      <rdfs:range rdf:resource="&xsd;string"/>
+      <rdfs:domain rdf:resource="&emo;Cruise"/>
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="&emo;vesselCode">
+      <dc:description>The official code of the vessel of the cruise such as '32OC'</dc:description>
+      <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      <rdfs:range rdf:resource="&xsd;string"/>
+      <rdfs:domain rdf:resource="&emo;Cruise"/>
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="&emo;vesselURI">
+      <dc:description>The official code of the vessel of the cruise such as 'http://vocab.nerc.ac.uk/collection/L06/current/31/'</dc:description>
+      <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      <rdfs:range rdf:resource="&xsd;anyURI"/>
+      <rdfs:domain rdf:resource="&emo;Cruise"/>
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="&emo;communityURI">
+      <dc:description>The community URI of the cruise such as 'http://vocab.nerc.ac.uk/collection/C17/current/32OC'</dc:description>
+      <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      <rdfs:range rdf:resource="&xsd;anyURI"/>
+      <rdfs:domain rdf:resource="&emo;Cruise"/>
+    </owl:DatatypeProperty>
 
 </rdf:RDF>
