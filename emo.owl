@@ -91,7 +91,7 @@
     <owl:ObjectProperty rdf:about="&emo;hasPotentialMatchRecord">
       <rdfs:label rdf:datatype="&xsd;string">Potential Match Record</rdfs:label>
       <dc:description>A potential match record</dc:description>
-      <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
       <rdfs:subPropertyOf rdf:resource="&prov;hadMember" />
       <rdfs:range rdf:resource="&emo;PotentialMatchMetadata"/>
       <rdfs:domain rdf:resource="&emo;PotentialMatchCollection"/>
