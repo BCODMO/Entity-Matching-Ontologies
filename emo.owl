@@ -263,6 +263,14 @@
       <rdfs:domain rdf:resource="&emo;PotentialCruiseMatchMetadata"/>
     </owl:ObjectProperty>
     
+    <owl:DatatypeProperty rdf:about="&emo;localCruiseURI">		
+      <rdfs:label rdf:datatype="&xsd;string">Local Cruise URI</rdfs:label>
+      <dc:description>An local cruise URI known by the local metadata system</dc:description>		
+      <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>		
+      <rdfs:range rdf:resource="&xsd;anyURI"/>		
+      <rdfs:domain rdf:resource="&emo;PotentialCruiseMatchMetadata"/>		
+    </owl:DatatypeProperty>
+    
     <owl:DatatypeProperty rdf:about="&emo;localCruiseID">		
       <rdfs:label rdf:datatype="&xsd;string">Local Cruise ID</rdfs:label>
       <dc:description>Should be stated as equivalent to the localCruise:cruiseID</dc:description>		
