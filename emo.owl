@@ -59,7 +59,7 @@
       <rdfs:label rdf:datatype="&xsd;string">Results</rdfs:label>
       <dc:description>The resulting collection of possible matches</dc:description>
       <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-      <rdfs:range rdf:resource="&emo;PotentialMatches"/>
+      <rdfs:range rdf:resource="&emo;PotentialMatchCollection"/>
       <rdfs:domain rdf:resource="&emo;MatchingRoutine"/>
     </owl:ObjectProperty>
     
