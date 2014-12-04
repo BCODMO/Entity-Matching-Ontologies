@@ -224,6 +224,7 @@
       <rdfs:label rdf:datatype="&xsd;string">Property Value</rdfs:label>
       <dc:description>The value of this property for the associated entity</dc:description>
       <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      <rdfs:subClassOf rdf:resource="&prov;value"/>
       <rdfs:domain rdf:resource="&emo;MatchingEntityProperty"/>
     </owl:DatatypeProperty>
   
