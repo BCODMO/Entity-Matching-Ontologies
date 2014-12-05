@@ -136,7 +136,9 @@
       <rdfs:domain rdf:resource="&emo;PotentialMatchMetadata"/>
     </owl:DatatypeProperty>
   
+  
   <!-- EXISTING MATCH -->
+  
   <owl:Class rdf:about="&emo;ExistingMatch">
     <rdfs:label rdf:datatype="&xsd;string">Existing Match</rdfs:label>
     <dc:description>A pre-existing match between two entities</dc:description>
@@ -158,7 +160,38 @@
       <rdfs:range rdf:resource="&xsd;decimal"/>
       <rdfs:domain rdf:resource="&emo;ExistingMatch"/>
     </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="&emo;existingMatchNotes">
+      <rdfs:label rdf:datatype="&xsd;string">Existing Match Notes</rdfs:label>
+      <dc:description>Notes about the pre-existing match</dc:description>
+      <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      <rdfs:range rdf:resource="&xsd;string"/>
+      <rdfs:domain rdf:resource="&emo;ExistingMatch"/>
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="&emo;existingMatchDifference">
+      <rdfs:label rdf:datatype="&xsd;string">Existing Match Difference</rdfs:label>
+      <dc:description>Something about the pre-existing match that made it less than perfect</dc:description>
+      <rdfs:range rdf:resource="&xsd;string"/>
+      <rdfs:domain rdf:resource="&emo;ExistingMatch"/>
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="&emo;existingMatchRelationship">
+      <rdfs:label rdf:datatype="&xsd;string">Existing Match Relationship</rdfs:label>
+      <dc:description>The predicate for the pre-existing match</dc:description>
+      <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      <rdfs:range rdf:resource="&xsd;anyURI"/>
+      <rdfs:domain rdf:resource="&emo;ExistingMatch"/>
+    </owl:DatatypeProperty>
   
+    <owl:DatatypeProperty rdf:about="&emo;existingMatchSource">
+      <rdfs:label rdf:datatype="&xsd;string">Existing Match Source</rdfs:label>
+      <dc:description>The source for the pre-existing matched eternal resource</dc:description>
+      <rdfs:range rdf:resource="&xsd;anyURI"/>
+      <rdfs:domain rdf:resource="&emo;ExistingMatch"/>
+    </owl:DatatypeProperty>
+    
+    
   <!-- POTENTIAL MATCH -->
   
   <owl:Class rdf:about="&emo;PotentialMatch">
