@@ -135,6 +135,13 @@
       <rdfs:range rdf:resource="&xsd;decimal"/>
       <rdfs:domain rdf:resource="&emo;PotentialMatchMetadata"/>
     </owl:DatatypeProperty>
+    
+    <owl:ObjectProperty rdf:about="&emo;differingValuesForProperty">		
+      <rdfs:label rdf:datatype="&xsd;string">Differening Values for Property</rdfs:label>
+      <dc:description>A property type where for the potential match, there are different values</dc:description>		
+      <rdfs:range rdf:resource="&emo;MatchingEntityPropertyType"/>		
+      <rdfs:domain rdf:resource="&emo;PotentialCruiseMatchMetadata"/>		
+    </owl:ObjectProperty>
   
   
   <!-- EXISTING MATCH -->
