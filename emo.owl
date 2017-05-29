@@ -18,27 +18,27 @@
   xmlns:rdf="&rdf;"
   xmlns:rdfs="&rdfs;"
   xml:base="&emo;">
-  
+
   <owl:Ontology rdf:about="&emo;">
     <rdfs:label rdf:datatype="&xsd;string">Entity Matching Ontology</rdfs:label>
     <dc:description>An ontology for describing matches between entities</dc:description>
   </owl:Ontology>
-  
+
   <!-- MATCHING ROUTINE -->
-  
+
   <owl:Class rdf:about="&emo;MatchingRoutine">
     <rdfs:label rdf:datatype="&xsd;string">Matching Routine</rdfs:label>
     <dc:description rdf:datatype="&xsd;string">A matching routine run by an agent to match one or more entities to one or more distinct entities</dc:description>
     <rdfs:subClassOf rdf:resource="&prov;Activity"/>
   </owl:Class>
-  
+
     <owl:DatatypeProperty rdf:about="&emo;routineIdentifier">
       <rdfs:label rdf:datatype="&xsd;string">ID</rdfs:label>
       <dc:description>An arbitrary, but unique identifier for this routine</dc:description>
       <rdfs:range rdf:resource="&xsd;anyURI"/>
       <rdfs:domain rdf:resource="&emo;MatchingRoutine"/>
     </owl:DatatypeProperty>
-  
+
     <owl:ObjectProperty rdf:about="&emo;hasRoutineCriteria">
       <rdfs:label rdf:datatype="&xsd;string">Criteria</rdfs:label>
       <dc:description>The criteria that determines whether a possible match between two entities is noteworthy</dc:description>
@@ -46,7 +46,7 @@
       <rdfs:range rdf:resource="&prov;Collection"/>
       <rdfs:domain rdf:resource="&emo;MatchingRoutine"/>
     </owl:ObjectProperty>
-    
+
     <owl:ObjectProperty rdf:about="&emo;wasCreatedBy">
       <rdfs:label rdf:datatype="&xsd;string">Creator</rdfs:label>
       <dc:description>The agent responisble creating this routine</dc:description>
@@ -54,7 +54,7 @@
       <rdfs:range rdf:resource="&prov;Agent"/>
       <rdfs:domain rdf:resource="&emo;MatchingRoutine"/>
     </owl:ObjectProperty>
-    
+
     <owl:ObjectProperty rdf:about="&emo;hasRoutineResults">
       <rdfs:label rdf:datatype="&xsd;string">Results</rdfs:label>
       <dc:description>The resulting collection of possible matches</dc:description>
@@ -62,7 +62,7 @@
       <rdfs:range rdf:resource="&emo;PotentialMatchCollection"/>
       <rdfs:domain rdf:resource="&emo;MatchingRoutine"/>
     </owl:ObjectProperty>
-    
+
     <owl:ObjectProperty rdf:about="&emo;hasLocalDataSource">
       <rdfs:label rdf:datatype="&xsd;string">Local Data Source</rdfs:label>
       <dc:description>The local data source being matched to external resources</dc:description>
@@ -70,7 +70,7 @@
       <rdfs:range rdf:resource="&prov;Entity"/>
       <rdfs:domain rdf:resource="&emo;MatchingRoutine"/>
     </owl:ObjectProperty>
-    
+
     <owl:ObjectProperty rdf:about="&emo;hasExternalDataSource">
       <rdfs:label rdf:datatype="&xsd;string">External Data Source</rdfs:label>
       <dc:description>The external data source of resource(s) that are being matched to</dc:description>
@@ -79,15 +79,15 @@
       <rdfs:domain rdf:resource="&emo;MatchingRoutine"/>
     </owl:ObjectProperty>
 
-  
+
   <!-- POTENTIAL MATCH COLLECTION -->
-  
+
   <owl:Class rdf:about="&emo;PotentialMatchCollection">
     <rdfs:label rdf:datatype="&xsd;string">Potential Matches</rdfs:label>
     <dc:description>Metadata about potential matches for one local entity</dc:description>
     <rdfs:subClassOf rdf:resource="&prov;Collection"/>
   </owl:Class>
-    
+
     <owl:ObjectProperty rdf:about="&emo;hasPotentialMatchRecord">
       <rdfs:label rdf:datatype="&xsd;string">Potential Match Record</rdfs:label>
       <dc:description>A potential match record</dc:description>
@@ -96,15 +96,15 @@
       <rdfs:range rdf:resource="&emo;PotentialMatchMetadata"/>
       <rdfs:domain rdf:resource="&emo;PotentialMatchCollection"/>
     </owl:ObjectProperty>
-    
-    
+
+
   <!-- POTENTIAL MATCH METADATA -->
-  
-  <owl:Class rdf:about="&emo;PotentialMatchMetadata">		
-    <rdfs:label rdf:datatype="&xsd;string">Potential Match Metadata</rdfs:label>		
-    <dc:description>Metadata about the Potential Matches for one local MatchingEntity</dc:description>		
-  </owl:Class>		
-  
+
+  <owl:Class rdf:about="&emo;PotentialMatchMetadata">
+    <rdfs:label rdf:datatype="&xsd;string">Potential Match Metadata</rdfs:label>
+    <dc:description>Metadata about the Potential Matches for one local MatchingEntity</dc:description>
+  </owl:Class>
+
   <owl:ObjectProperty rdf:about="&emo;hasLocalMatchingEntity">
   	<rdfs:label rdf:datatype="&xsd;string">Local Matched Entity</rdfs:label>
       <dc:description>The local entity that had potential matches</dc:description>
@@ -112,22 +112,22 @@
       <rdfs:range rdf:resource="&emo;MatchingEntity"/>
       <rdfs:domain rdf:resource="&emo;PotentialMatchMetadata"/>
     </owl:ObjectProperty>
-    
+
     <owl:ObjectProperty rdf:about="&emo;hasExistingMatch">
       <rdfs:label rdf:datatype="&xsd;string">Existing Match</rdfs:label>
       <dc:description>A pre-existing match</dc:description>
       <rdfs:range rdf:resource="&emo;ExistingMatch"/>
       <rdfs:domain rdf:resource="&emo;PotentialMatchMetadata"/>
     </owl:ObjectProperty>
-    
+
     <owl:ObjectProperty rdf:about="&emo;hasPotentialMatch">
       <rdfs:label rdf:datatype="&xsd;string">Potential Match</rdfs:label>
       <dc:description>A potential match</dc:description>
       <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
       <rdfs:range rdf:resource="&emo;PotentialMatch"/>
       <rdfs:domain rdf:resource="&emo;PotentialMatchMetadata"/>
-    </owl:ObjectProperty>	
-    		
+    </owl:ObjectProperty>
+
     <owl:DatatypeProperty rdf:about="&emo;bestMatchQuality">
       <rdfs:label rdf:datatype="&xsd;string">Best Match Quality</rdfs:label>
       <dc:description>The "best" quality indicator for all the PotentialMatches for this local entity</dc:description>
@@ -135,23 +135,23 @@
       <rdfs:range rdf:resource="&xsd;decimal"/>
       <rdfs:domain rdf:resource="&emo;PotentialMatchMetadata"/>
     </owl:DatatypeProperty>
-    
-    <owl:ObjectProperty rdf:about="&emo;differingValuesForProperty">		
+
+    <owl:ObjectProperty rdf:about="&emo;differingValuesForProperty">
       <rdfs:label rdf:datatype="&xsd;string">Differening Values for Property</rdfs:label>
-      <dc:description>A property type where for the potential match, there are different values</dc:description>		
-      <rdfs:range rdf:resource="&emo;MatchingEntityPropertyType"/>		
-      <rdfs:domain rdf:resource="&emo;PotentialCruiseMatchMetadata"/>		
+      <dc:description>A property type where for the potential match, there are different values</dc:description>
+      <rdfs:range rdf:resource="&emo;MatchingEntityPropertyType"/>
+      <rdfs:domain rdf:resource="&emo;PotentialCruiseMatchMetadata"/>
     </owl:ObjectProperty>
-  
-  
+
+
   <!-- EXISTING MATCH -->
-  
+
   <owl:Class rdf:about="&emo;ExistingMatch">
     <rdfs:label rdf:datatype="&xsd;string">Existing Match</rdfs:label>
     <dc:description>A pre-existing match between two entities</dc:description>
     <rdfs:subClassOf rdf:resource="&prov;Entity"/>
   </owl:Class>
-  
+
     <owl:ObjectProperty rdf:about="&emo;matchedResource">
       <rdfs:label rdf:datatype="&xsd;string">Matched Resource</rdfs:label>
       <dc:description>The URI of a rdf resource for a pre-existing match</dc:description>
@@ -159,7 +159,7 @@
       <rdfs:range rdf:resource="&owl;Thing"/>
       <rdfs:domain rdf:resource="&emo;ExistingMatch"/>
     </owl:ObjectProperty>
-    
+
     <owl:DatatypeProperty rdf:about="&emo;existingMatchQuality">
       <rdfs:label rdf:datatype="&xsd;string">Existing Match Quality</rdfs:label>
       <dc:description>The quality indicator for a pre-existing match</dc:description>
@@ -167,7 +167,7 @@
       <rdfs:range rdf:resource="&xsd;decimal"/>
       <rdfs:domain rdf:resource="&emo;ExistingMatch"/>
     </owl:DatatypeProperty>
-    
+
     <owl:DatatypeProperty rdf:about="&emo;existingMatchNotes">
       <rdfs:label rdf:datatype="&xsd;string">Existing Match Notes</rdfs:label>
       <dc:description>Notes about the pre-existing match</dc:description>
@@ -175,14 +175,14 @@
       <rdfs:range rdf:resource="&xsd;string"/>
       <rdfs:domain rdf:resource="&emo;ExistingMatch"/>
     </owl:DatatypeProperty>
-    
+
     <owl:DatatypeProperty rdf:about="&emo;existingMatchDifference">
       <rdfs:label rdf:datatype="&xsd;string">Existing Match Difference</rdfs:label>
       <dc:description>Something about the pre-existing match that made it less than perfect</dc:description>
       <rdfs:range rdf:resource="&xsd;string"/>
       <rdfs:domain rdf:resource="&emo;ExistingMatch"/>
     </owl:DatatypeProperty>
-    
+
     <owl:DatatypeProperty rdf:about="&emo;existingMatchRelationship">
       <rdfs:label rdf:datatype="&xsd;string">Existing Match Relationship</rdfs:label>
       <dc:description>The predicate for the pre-existing match</dc:description>
@@ -190,37 +190,37 @@
       <rdfs:range rdf:resource="&xsd;anyURI"/>
       <rdfs:domain rdf:resource="&emo;ExistingMatch"/>
     </owl:DatatypeProperty>
-  
+
     <owl:DatatypeProperty rdf:about="&emo;existingMatchSource">
       <rdfs:label rdf:datatype="&xsd;string">Existing Match Source</rdfs:label>
       <dc:description>The source for the pre-existing matched eternal resource</dc:description>
       <rdfs:range rdf:resource="&xsd;anyURI"/>
       <rdfs:domain rdf:resource="&emo;ExistingMatch"/>
     </owl:DatatypeProperty>
-    
-    
+
+
   <!-- POTENTIAL MATCH -->
-  
+
   <owl:Class rdf:about="&emo;PotentialMatch">
     <rdfs:label rdf:datatype="&xsd;string">Potential Match</rdfs:label>
     <dc:description>A potential match describes the quality of the match between two entities</dc:description>
     <rdfs:subClassOf rdf:resource="&prov;Entity"/>
     <rdfs:subClassOf>
-      <owl:Restriction> 
+      <owl:Restriction>
         <owl:onProperty rdf:resource="&emo;matchQuality"/>
         <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-      </owl:Restriction> 
-      <owl:Restriction> 
+      </owl:Restriction>
+      <owl:Restriction>
         <owl:onProperty rdf:resource="&emo;hasLocalEntity"/>
         <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-      </owl:Restriction> 
-      <owl:Restriction> 
+      </owl:Restriction>
+      <owl:Restriction>
         <owl:onProperty rdf:resource="&emo;hasExternalEntity"/>
         <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-      </owl:Restriction> 
+      </owl:Restriction>
     </rdfs:subClassOf>
   </owl:Class>
-  
+
     <owl:DatatypeProperty rdf:about="&emo;matchQuality">
       <rdfs:label rdf:datatype="&xsd;string">Match Quality</rdfs:label>
       <dc:description>The calculated quality of the potential match, typically a percentage between 0 - 100</dc:description>
@@ -228,7 +228,7 @@
       <rdfs:range rdf:resource="&xsd;decimal"/>
       <rdfs:domain rdf:resource="&emo;PotentialMatch"/>
     </owl:DatatypeProperty>
-    
+
     <owl:ObjectProperty rdf:about="&emo;hasLocalEntity">
       <rdfs:label rdf:datatype="&xsd;string">Local Entity</rdfs:label>
       <dc:description>The local entity in the potential match</dc:description>
@@ -236,7 +236,7 @@
       <rdfs:range rdf:resource="&emo;MatchingEntity"/>
       <rdfs:domain rdf:resource="&emo;PotentialMatch"/>
     </owl:ObjectProperty>
-    
+
     <owl:ObjectProperty rdf:about="&emo;hasExtenalEntity">
       <rdfs:label rdf:datatype="&xsd;string">External Entity</rdfs:label>
       <dc:description>The external entity in the potential match</dc:description>
@@ -244,24 +244,23 @@
       <rdfs:range rdf:resource="&emo;MatchingEntity"/>
       <rdfs:domain rdf:resource="&emo;PotentialMatch"/>
     </owl:ObjectProperty>
-    
+
   <!-- MATCHING ENTITY -->
-  
+
   <owl:Class rdf:about="&emo;MatchingEntity">
     <rdfs:label rdf:datatype="&xsd;string">Matching Entity</rdfs:label>
     <dc:description>An entity that can be compared to other Matching Entities and matched</dc:description>
     <rdfs:subClassOf rdf:resource="&prov;Entity"/>
   </owl:Class>
-  
+
     <owl:ObjectProperty rdf:about="&emo;hasMatchingEntityProperty">
       <rdfs:label rdf:datatype="&xsd;string">Matching Entity Property</rdfs:label>
       <dc:description>A property for comparison of a MatchingEntity</dc:description>
-      <rdfs:subClassOf rdf:resource="&prov;Entity"/>
       <rdfs:range rdf:resource="&emo;MatchingEntityProperty"/>
       <rdfs:domain rdf:resource="&emo;MatchingEntity"/>
     </owl:ObjectProperty>
-    
-    
+
+
   <!-- MATCHING ENTITY PROPERTY -->
 
   <owl:Class rdf:about="&emo;MatchingEntityProperty">
@@ -269,60 +268,59 @@
     <dc:description>An property whose value can be compared to other MatchingEntityProperty's of the same type</dc:description>
     <rdfs:subClassOf rdf:resource="&prov;Entity"/>
     <rdfs:subClassOf>
-      <owl:Restriction> 
+      <owl:Restriction>
         <owl:onProperty rdf:resource="&emo;hasPropertyType"/>
         <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-      </owl:Restriction> 
-      <owl:Restriction> 
+      </owl:Restriction>
+      <owl:Restriction>
         <owl:onProperty rdf:resource="&emo;propertyValue"/>
         <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-      </owl:Restriction> 
+      </owl:Restriction>
     </rdfs:subClassOf>
   </owl:Class>
-  
+
     <owl:ObjectProperty rdf:about="&emo;hasPropertyType">
       <rdfs:label rdf:datatype="&xsd;string">Matching Entity Property</rdfs:label>
       <dc:description>A property for comparison of a MatchingEntity</dc:description>
       <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-      <rdfs:subClassOf rdf:resource="&prov;Entity"/>
       <rdfs:range rdf:resource="&emo;MatchingEntityPropertyType"/>
       <rdfs:domain rdf:resource="&emo;MatchingEntityProperty"/>
     </owl:ObjectProperty>
-  
+
     <owl:DatatypeProperty rdf:about="&emo;propertyValue">
       <rdfs:label rdf:datatype="&xsd;string">Property Value</rdfs:label>
       <dc:description>The value of this property for the associated entity</dc:description>
       <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-      <rdfs:subClassOf rdf:resource="&prov;value"/>
+      <rdfs:subPropertyOf rdf:resource="&prov;value"/>
       <rdfs:domain rdf:resource="&emo;MatchingEntityProperty"/>
     </owl:DatatypeProperty>
-  
+
   <!-- MATCHING ENTITY PROPERTY TYPE -->
-  
+
   <owl:Class rdf:about="&emo;MatchingEntityPropertyType">
     <rdfs:label rdf:datatype="&xsd;string">Matching Entity Property Type</rdfs:label>
     <dc:description>A specific named type of property</dc:description>
   </owl:Class>
-  
-  
+
+
   <!--
- 
+
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Cruise Matching
     //
     ///////////////////////////////////////////////////////////////////////////////////////
-     
+
   -->
-  
+
   <!-- POTENTIAL CRUISE MATCH METADATA -->
-  
-  <owl:Class rdf:about="&emo;PotentialCruiseMatchMetadata">		
-    <rdfs:label rdf:datatype="&xsd;string">Potential Cruise Match Metadata</rdfs:label>		
-    <dc:description>Metadata about the Potential Cruise Matches for one local Cruise</dc:description>	
+
+  <owl:Class rdf:about="&emo;PotentialCruiseMatchMetadata">
+    <rdfs:label rdf:datatype="&xsd;string">Potential Cruise Match Metadata</rdfs:label>
+    <dc:description>Metadata about the Potential Cruise Matches for one local Cruise</dc:description>
     <rdfs:subClassOf rdf:resource="&emo;PotentialMatchMetadata"/>
   </owl:Class>
-  
+
     <owl:ObjectProperty rdf:about="&emo;hasLocalCruise">
   	  <rdfs:label rdf:datatype="&xsd;string">Local Cruise</rdfs:label>
       <dc:description>The local cruise that had potential matches</dc:description>
@@ -331,48 +329,48 @@
       <rdfs:range rdf:resource="&emo;Cruise"/>
       <rdfs:domain rdf:resource="&emo;PotentialCruiseMatchMetadata"/>
     </owl:ObjectProperty>
-    
-    <owl:DatatypeProperty rdf:about="&emo;localCruiseURI">		
+
+    <owl:DatatypeProperty rdf:about="&emo;localCruiseURI">
       <rdfs:label rdf:datatype="&xsd;string">Local Cruise URI</rdfs:label>
-      <dc:description>An local cruise URI known by the local metadata system</dc:description>		
-      <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>		
-      <rdfs:range rdf:resource="&xsd;anyURI"/>		
-      <rdfs:domain rdf:resource="&emo;PotentialCruiseMatchMetadata"/>		
+      <dc:description>An local cruise URI known by the local metadata system</dc:description>
+      <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      <rdfs:range rdf:resource="&xsd;anyURI"/>
+      <rdfs:domain rdf:resource="&emo;PotentialCruiseMatchMetadata"/>
     </owl:DatatypeProperty>
-    
-    <owl:DatatypeProperty rdf:about="&emo;localCruiseID">		
+
+    <owl:DatatypeProperty rdf:about="&emo;localCruiseID">
       <rdfs:label rdf:datatype="&xsd;string">Local Cruise ID</rdfs:label>
-      <dc:description>Should be stated as equivalent to the localCruise:cruiseID</dc:description>		
-      <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>		
-      <rdfs:range rdf:resource="&xsd;string"/>		
-      <rdfs:domain rdf:resource="&emo;PotentialCruiseMatchMetadata"/>		
-    </owl:DatatypeProperty>		
-    		
-    <owl:DatatypeProperty rdf:about="&emo;localStartDate">		
+      <dc:description>Should be stated as equivalent to the localCruise:cruiseID</dc:description>
+      <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      <rdfs:range rdf:resource="&xsd;string"/>
+      <rdfs:domain rdf:resource="&emo;PotentialCruiseMatchMetadata"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="&emo;localStartDate">
       <rdfs:label rdf:datatype="&xsd;string">Local Start Date</rdfs:label>
-      <dc:description>Should be stated as equivalent to the localCruise:startDate</dc:description>		
-      <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>		
-      <rdfs:range rdf:resource="&xsd;string"/>		
-      <rdfs:domain rdf:resource="&emo;PotentialCruiseMatchMetadata"/>		
-    </owl:DatatypeProperty>		
-    		
-    <owl:DatatypeProperty rdf:about="&emo;localVesselCode">		
+      <dc:description>Should be stated as equivalent to the localCruise:startDate</dc:description>
+      <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      <rdfs:range rdf:resource="&xsd;string"/>
+      <rdfs:domain rdf:resource="&emo;PotentialCruiseMatchMetadata"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="&emo;localVesselCode">
       <rdfs:label rdf:datatype="&xsd;string">Local Vessel Code</rdfs:label>
-      <dc:description>Should be stated as equivalent to the localCruise:vesselCode</dc:description>		
-      <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>		
-      <rdfs:range rdf:resource="&xsd;string"/>		
-      <rdfs:domain rdf:resource="&emo;PotentialCruiseMatchMetadata"/>		
-    </owl:DatatypeProperty>	
-  
-  
+      <dc:description>Should be stated as equivalent to the localCruise:vesselCode</dc:description>
+      <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      <rdfs:range rdf:resource="&xsd;string"/>
+      <rdfs:domain rdf:resource="&emo;PotentialCruiseMatchMetadata"/>
+    </owl:DatatypeProperty>
+
+
   <!-- POSSIBLE CRUISE MATCH -->
-  
+
   <owl:Class rdf:about="&emo;PossibleCruiseMatch">
   	<rdfs:label rdf:datatype="&xsd;string">Possible Cruise Match</rdfs:label>
   	<dc:description>A possible match between two cruises</dc:description>
     <rdfs:subClassOf rdf:resource="&emo;PotentialMatch"/>
   </owl:Class>
-  
+
     <owl:ObjectProperty rdf:about="&emo;localCruise">
       <rdfs:label rdf:datatype="&xsd;string">Local Cruise</rdfs:label>
       <dc:description>The local cruise in the potential match</dc:description>
@@ -381,7 +379,7 @@
       <rdfs:range rdf:resource="&emo;Cruise"/>
       <rdfs:domain rdf:resource="&emo;PotentialMatch"/>
     </owl:ObjectProperty>
-    
+
     <owl:ObjectProperty rdf:about="&emo;externalCruise">
        <rdfs:label rdf:datatype="&xsd;string">External Cruise</rdfs:label>
       <dc:description>The external cruise in the potential match</dc:description>
@@ -390,147 +388,147 @@
       <rdfs:range rdf:resource="&emo;Cruise"/>
       <rdfs:domain rdf:resource="&emo;PotentialMatch"/>
     </owl:ObjectProperty>
-  
-  <!-- CRUISE -->  
+
+  <!-- CRUISE -->
   <owl:Class rdf:about="&emo;Cruise">
     <rdfs:label rdf:datatype="&xsd;string">A cruise resource</rdfs:label>
     <rdfs:subClassOf rdf:resource="&emo;MatchingEntity"/>
     <dc:description>A Cruise</dc:description>
   </owl:Class>
-  
+
     <owl:DatatypeProperty rdf:about="&emo;cruiseID">
-      <!-- 
-        Should be a View into the propertyValue of one of this Cruise:hasMatchingEntityProperty, 
-        where rdf:type is &emo;property_cruise_id, 
+      <!--
+        Should be a View into the propertyValue of one of this Cruise:hasMatchingEntityProperty,
+        where rdf:type is &emo;property_cruise_id,
       -->
       <dc:description>The official cruise ID such as 'OC404-01' via</dc:description>
       <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
       <rdfs:range rdf:resource="&xsd;string"/>
       <rdfs:domain rdf:resource="&emo;Cruise"/>
     </owl:DatatypeProperty>
-    
+
     <owl:DatatypeProperty rdf:about="&emo;startDate">
-      <!-- 
-        Should be a View into the propertyValue of one of this Cruise:hasMatchingEntityProperty, 
-        where rdf:type is &emo;property_cruise_start_date, 
+      <!--
+        Should be a View into the propertyValue of one of this Cruise:hasMatchingEntityProperty,
+        where rdf:type is &emo;property_cruise_start_date,
       -->
       <dc:description>The official start date of the cruise such as '2014-11-24'</dc:description>
       <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
       <rdfs:range rdf:resource="&xsd;date"/>
       <rdfs:domain rdf:resource="&emo;Cruise"/>
     </owl:DatatypeProperty>
-    
+
     <owl:DatatypeProperty rdf:about="&emo;endDate">
-      <!-- 
-        Should be a View into the propertyValue of one of this Cruise:hasMatchingEntityProperty, 
-        where rdf:type is &emo;property_cruise_end_date, 
+      <!--
+        Should be a View into the propertyValue of one of this Cruise:hasMatchingEntityProperty,
+        where rdf:type is &emo;property_cruise_end_date,
       -->
       <dc:description>The official end date of the cruise such as '2014-11-30'</dc:description>
       <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
       <rdfs:range rdf:resource="&xsd;date"/>
       <rdfs:domain rdf:resource="&emo;Cruise"/>
     </owl:DatatypeProperty>
-    
+
     <owl:DatatypeProperty rdf:about="&emo;chiefScientist">
-      <!-- 
-        Should be a View into the propertyValue of one of this Cruise:hasMatchingEntityProperty, 
-        where rdf:type is &emo;property_cruise_chief_scientist, 
+      <!--
+        Should be a View into the propertyValue of one of this Cruise:hasMatchingEntityProperty,
+        where rdf:type is &emo;property_cruise_chief_scientist,
       -->
       <dc:description>The name of the official chief scientist of the cruise such as 'Dennis McGillicuddy'</dc:description>
       <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
       <rdfs:range rdf:resource="&xsd;string"/>
       <rdfs:domain rdf:resource="&emo;Cruise"/>
     </owl:DatatypeProperty>
-    
+
     <owl:DatatypeProperty rdf:about="&emo;vesselName">
-      <!-- 
-        Should be a View into the propertyValue of one of this Cruise:hasMatchingEntityProperty, 
-        where rdf:type is &emo;property_cruise_vessel_name, 
+      <!--
+        Should be a View into the propertyValue of one of this Cruise:hasMatchingEntityProperty,
+        where rdf:type is &emo;property_cruise_vessel_name,
       -->
       <dc:description>The official name of the vessel of the cruise such as 'Oceanus'</dc:description>
       <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
       <rdfs:range rdf:resource="&xsd;string"/>
       <rdfs:domain rdf:resource="&emo;Cruise"/>
     </owl:DatatypeProperty>
-    
+
     <owl:DatatypeProperty rdf:about="&emo;vesselCode">
-      <!-- 
-        Should be a View into the propertyValue of one of this Cruise:hasMatchingEntityProperty, 
-        where rdf:type is &emo;property_cruise_vessel_code, 
+      <!--
+        Should be a View into the propertyValue of one of this Cruise:hasMatchingEntityProperty,
+        where rdf:type is &emo;property_cruise_vessel_code,
       -->
       <dc:description>The official code of the vessel of the cruise such as '32OC'</dc:description>
       <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
       <rdfs:range rdf:resource="&xsd;string"/>
       <rdfs:domain rdf:resource="&emo;Cruise"/>
     </owl:DatatypeProperty>
-    
+
     <owl:DatatypeProperty rdf:about="&emo;vesselURI">
-      <!-- 
-        Should be a View into the propertyValue of one of this Cruise:hasMatchingEntityProperty, 
-        where rdf:type is &emo;property_cruise_vessel_uri, 
+      <!--
+        Should be a View into the propertyValue of one of this Cruise:hasMatchingEntityProperty,
+        where rdf:type is &emo;property_cruise_vessel_uri,
       -->
       <dc:description>The official code of the vessel of the cruise such as 'http://vocab.nerc.ac.uk/collection/L06/current/31/'</dc:description>
       <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
       <rdfs:range rdf:resource="&xsd;anyURI"/>
       <rdfs:domain rdf:resource="&emo;Cruise"/>
     </owl:DatatypeProperty>
-    
+
     <owl:DatatypeProperty rdf:about="&emo;communityURI">
-      <!-- 
-        Should be a View into the propertyValue of one of this Cruise:hasMatchingEntityProperty, 
-        where rdf:type is &emo;property_cruise_community_uri, 
+      <!--
+        Should be a View into the propertyValue of one of this Cruise:hasMatchingEntityProperty,
+        where rdf:type is &emo;property_cruise_community_uri,
       -->
       <dc:description>The community URI of the cruise such as 'http://vocab.nerc.ac.uk/collection/C17/current/32OC'</dc:description>
       <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
       <rdfs:range rdf:resource="&xsd;anyURI"/>
       <rdfs:domain rdf:resource="&emo;Cruise"/>
     </owl:DatatypeProperty>
-    
-  
+
+
   <!--
- 
+
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Individuals
     //
     ///////////////////////////////////////////////////////////////////////////////////////
-     
+
   -->
-  
+
   <owl:NamedIndividual rdf:about="&emo;property_cruise_id">
     <rdf:type rdf:resource="&emo;MatchingEntityPropertyType"/>
-    <rdfs:label rdf:datatype="&xsd;string">Cruise ID</rdfs:label>		
-    <dc:description>The cruise ID of a Cruise</dc:description>	
+    <rdfs:label rdf:datatype="&xsd;string">Cruise ID</rdfs:label>
+    <dc:description>The cruise ID of a Cruise</dc:description>
   </owl:NamedIndividual>
-  
+
   <owl:NamedIndividual rdf:about="&emo;property_cruise_start_date">
     <rdf:type rdf:resource="&emo;MatchingEntityPropertyType"/>
-    <rdfs:label rdf:datatype="&xsd;string">Start Date</rdfs:label>		
+    <rdfs:label rdf:datatype="&xsd;string">Start Date</rdfs:label>
     <dc:description>The date of the </dc:description>
   </owl:NamedIndividual>
-  
+
   <owl:NamedIndividual rdf:about="&emo;property_cruise_end_date">
     <rdf:type rdf:resource="&emo;MatchingEntityPropertyType"/>
   </owl:NamedIndividual>
-  
+
   <owl:NamedIndividual rdf:about="&emo;property_cruise_vessel_code">
     <rdf:type rdf:resource="&emo;MatchingEntityPropertyType"/>
   </owl:NamedIndividual>
-  
+
   <owl:NamedIndividual rdf:about="&emo;property_cruise_vessel_name">
     <rdf:type rdf:resource="&emo;MatchingEntityPropertyType"/>
   </owl:NamedIndividual>
-  
+
   <owl:NamedIndividual rdf:about="&emo;property_cruise_vessel_uri">
     <rdf:type rdf:resource="&emo;MatchingEntityPropertyType"/>
   </owl:NamedIndividual>
-  
+
   <owl:NamedIndividual rdf:about="&emo;property_cruise_chief_scientist">
     <rdf:type rdf:resource="&emo;MatchingEntityPropertyType"/>
   </owl:NamedIndividual>
-  
+
   <owl:NamedIndividual rdf:about="&emo;property_cruise_community_uri">
     <rdf:type rdf:resource="&emo;MatchingEntityPropertyType"/>
   </owl:NamedIndividual>
-  
+
 </rdf:RDF>
